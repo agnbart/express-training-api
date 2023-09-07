@@ -1,92 +1,92 @@
 [
   {
-    "id": "1",
-    "trainExpressName": "Shinkansen",
-    "countryOfOrigin": "Japan",
-    "yearOfConstruction": "1964",
+    "id": 1,
+    "trainExpressName": "Some train name",
+    "countryOfOrigin": "Example country",
+    "yearOfConstruction": "2137",
     "maxKilometerPerHour": "320",
-    "destinationFrom": "Tokyo",
-    "destinationTo": "Osaka"
+    "destinationFrom": "Earth",
+    "destinationTo": "Moon"
   },
   {
-    "id": "2",
-    "trainExpressName": "Eurostar",
-    "countryOfOrigin": "United Kingdom",
-    "yearOfConstruction": "1994",
+    "id": 2,
+    "trainExpressName": "Some train name",
+    "countryOfOrigin": "Example country",
+    "yearOfConstruction": "2137",
     "maxKilometerPerHour": "320",
-    "destinationFrom": "London",
-    "destinationTo": "Paris"
+    "destinationFrom": "Earth",
+    "destinationTo": "Moon"
   },
   {
     "id": "3",
-    "trainExpressName": "TGV",
-    "countryOfOrigin": "France",
-    "yearOfConstruction": "1978",
-    "maxKilometerPerHour": "574.8",
-    "destinationFrom": "Paris",
-    "destinationTo": "Marseille"
+    "trainExpressName": "Some train name",
+    "countryOfOrigin": "Example country",
+    "yearOfConstruction": "2137",
+    "maxKilometerPerHour": "320",
+    "destinationFrom": "Earth",
+    "destinationTo": "Moon"
   },
   {
     "id": "4",
-    "trainExpressName": "ICE",
-    "countryOfOrigin": "Germany",
-    "yearOfConstruction": "1985",
-    "maxKilometerPerHour": "300",
-    "destinationFrom": "Frankfurt",
-    "destinationTo": "Munich"
+    "trainExpressName": "Some train name",
+    "countryOfOrigin": "Example country",
+    "yearOfConstruction": "2137",
+    "maxKilometerPerHour": "320",
+    "destinationFrom": "Earth",
+    "destinationTo": "Moon"
   },
   {
     "id": "5",
-    "trainExpressName": "Alfa Pendular",
-    "countryOfOrigin": "Portugal",
-    "yearOfConstruction": "1998",
-    "maxKilometerPerHour": "220",
-    "destinationFrom": "Lisbon",
-    "destinationTo": "Porto"
+    "trainExpressName": "Some train name",
+    "countryOfOrigin": "Example country",
+    "yearOfConstruction": "2137",
+    "maxKilometerPerHour": "320",
+    "destinationFrom": "Earth",
+    "destinationTo": "Moon"
   },
   {
     "id": "6",
-    "trainExpressName": "AVE",
-    "countryOfOrigin": "Spain",
-    "yearOfConstruction": "1992",
-    "maxKilometerPerHour": "310",
-    "destinationFrom": "Madrid",
-    "destinationTo": "Barcelona"
+    "trainExpressName": "Some train name",
+    "countryOfOrigin": "Example country",
+    "yearOfConstruction": "2137",
+    "maxKilometerPerHour": "320",
+    "destinationFrom": "Earth",
+    "destinationTo": "Moon"
   },
   {
     "id": "7",
-    "trainExpressName": "Gatimaan Express",
-    "countryOfOrigin": "India",
-    "yearOfConstruction": "2016",
-    "maxKilometerPerHour": "160",
-    "destinationFrom": "Delhi",
-    "destinationTo": "Agra"
+    "trainExpressName": "Some train name",
+    "countryOfOrigin": "Example country",
+    "yearOfConstruction": "2137",
+    "maxKilometerPerHour": "320",
+    "destinationFrom": "Earth",
+    "destinationTo": "Moon"
   },
   {
     "id": "8",
-    "trainExpressName": "Harmony Express",
-    "countryOfOrigin": "China",
-    "yearOfConstruction": "2010",
-    "maxKilometerPerHour": "350",
-    "destinationFrom": "Beijing",
-    "destinationTo": "Shanghai"
+    "trainExpressName": "Some train name",
+    "countryOfOrigin": "Example country",
+    "yearOfConstruction": "2137",
+    "maxKilometerPerHour": "320",
+    "destinationFrom": "Earth",
+    "destinationTo": "Moon"
   },
   {
     "id": "9",
-    "trainExpressName": "Hikari",
-    "countryOfOrigin": "Japan",
-    "yearOfConstruction": "1968",
-    "maxKilometerPerHour": "300",
-    "destinationFrom": "Tokyo",
-    "destinationTo": "Shin-Osaka"
+    "trainExpressName": "Some train name",
+    "countryOfOrigin": "Example country",
+    "yearOfConstruction": "2137",
+    "maxKilometerPerHour": "320",
+    "destinationFrom": "Earth",
+    "destinationTo": "Moon"
   },
   {
     "id": "10",
-    "trainExpressName": "Trans-Siberian Railway",
-    "countryOfOrigin": "Russia",
-    "yearOfConstruction": "1891",
-    "maxKilometerPerHour": "60",
-    "destinationFrom": "Moscow",
-    "destinationTo": "Vladivostok"
+    "trainExpressName": "Some train name",
+    "countryOfOrigin": "Example country",
+    "yearOfConstruction": "2137",
+    "maxKilometerPerHour": "320",
+    "destinationFrom": "Earth",
+    "destinationTo": "Moon"
   }
 ]
