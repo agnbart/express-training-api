@@ -15,7 +15,7 @@ app.get('/trains', (req, res) => {
     fs.readFile('data/trains.json', 'utf8', (err, data) => {
         if (err) {
             console.error(err);
-            res.status(500).json({ error: 'Błąd odczytu danych.' });
+            res.status(500).json({ error: 'Data read error.' });
             return;
         }
 
@@ -24,67 +24,60 @@ app.get('/trains', (req, res) => {
             res.json(trains);
         } catch (parseError) {
             console.error(parseError);
-            res.status(500).json({ error: 'Błąd parsowania danych JSON.' });
+            res.status(500).json({ error: 'JSON parsing error.' });
         }
     });
 });
 
-const createTrainPayload = {
-    trainExpressName: "Some train name",
-    countryOfOrigin: "Example country",
-    yearOfConstruction: "2137",
-    maxKilometerPerHour: "320",
-    destinationFrom: "Earth",
-    destinationTo: "Moon",
-}
+app.post('/trains', (req, res) => {
+    fs.readFile('data/trains.json', 'utf8', (readErr, data) => {
+        if (readErr) {
+            console.error(readErr);
+            res.status(500).json({ error: 'Data read error.' });
+            return;
+        }
 
-app.post('/trains',(req, res) => {
+        try {
+            const trainList = JSON.parse(data);
 
-    try{
-        fs.readFile('data/trains.json', 'utf8', (err, data) => {
-            if (err) {
-                console.error(err);
-                res.status(500).json({ error: 'Błąd odczytu danych.' });
-                return;
-            }
-            try {
-                const trainList = JSON.parse(data);
+            let highestId = 0;
+            trainList.forEach((train) => {
+                const id = parseInt(train.id);
+                if (!isNaN(id) && id > highestId) {
+                    highestId = id;
+                }
+            })
+            console.log(`highestId: ${highestId}`);
+            const newId = (highestId + 1).toString();
+            console.log(`newId: ${newId}`);
 
-                // Generowanie identyfikatora dla kolejnego pociągu
-                const newId = (trainList.length + 1).toString();
+            // Generowanie identyfikatora dla kolejnego pociągu
+            // const newId = (trainList.length + 1).toString();
 
-                // Tworzenie nowego obiektu pociągu z nowym identyfikatorem
-                const newTrain = {
-                    id: newId,
-                    // Wykorzystywane w Postmanie
-                    // ...req.body,
-                    ...createTrainPayload,
-                };
+            // Tworzenie nowego obiektu pociągu z nowym identyfikatorem
+            const newTrain = {
+                id: newId,
+                ...req.body,
+            };
 
-                trainList.push(newTrain);
+            trainList.push(newTrain);
 
-                fs.writeFile('data/trains.json', JSON.stringify(trainList, null, 2), 'utf8', (err) => {
-                    if (err) {
-                        console.log(err);
-                        res.status(500).json({ error: 'Błąd podczas zapisu danych.' });
-                    } else {
-                        res.json(trainList);
-                    }
-                });
-
-
-            } catch (parseError) {
-                console.error(parseError);
-                res.status(500).json({ error: 'Błąd parsowania danych JSON.' });
-            }
-
-        });
-
-    }catch (err) {
-        console.log('Niestety pojawił się błąd', err);
-    }
-})
+            // Zaktualizuj plik z danymi JSON
+            fs.writeFile('data/trains.json', JSON.stringify(trainList, null, 2), 'utf8', (writeErr) => {
+                if (writeErr) {
+                    console.error(writeErr);
+                    res.status(500).json({ error: 'Data write error.' });
+                } else {
+                    res.json(trainList);
+                }
+            });
+        } catch (parseError) {
+            console.error(parseError);
+            res.status(500).json({ error: 'JSON parsing error.' });
+        }
+    });
+});
 
 app.listen(PORT, () => {
     console.log('Server listening on port http://localhost:4000')
-})
+});

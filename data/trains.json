@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "trainExpressName": "Some train name",
     "countryOfOrigin": "Example country",
     "yearOfConstruction": "2137",
@@ -9,7 +9,7 @@
     "destinationTo": "Moon"
   },
   {
-    "id": 2,
+    "id": "2",
     "trainExpressName": "Some train name",
     "countryOfOrigin": "Example country",
     "yearOfConstruction": "2137",
@@ -46,42 +46,6 @@
   },
   {
     "id": "6",
-    "trainExpressName": "Some train name",
-    "countryOfOrigin": "Example country",
-    "yearOfConstruction": "2137",
-    "maxKilometerPerHour": "320",
-    "destinationFrom": "Earth",
-    "destinationTo": "Moon"
-  },
-  {
-    "id": "7",
-    "trainExpressName": "Some train name",
-    "countryOfOrigin": "Example country",
-    "yearOfConstruction": "2137",
-    "maxKilometerPerHour": "320",
-    "destinationFrom": "Earth",
-    "destinationTo": "Moon"
-  },
-  {
-    "id": "8",
-    "trainExpressName": "Some train name",
-    "countryOfOrigin": "Example country",
-    "yearOfConstruction": "2137",
-    "maxKilometerPerHour": "320",
-    "destinationFrom": "Earth",
-    "destinationTo": "Moon"
-  },
-  {
-    "id": "9",
-    "trainExpressName": "Some train name",
-    "countryOfOrigin": "Example country",
-    "yearOfConstruction": "2137",
-    "maxKilometerPerHour": "320",
-    "destinationFrom": "Earth",
-    "destinationTo": "Moon"
-  },
-  {
-    "id": "10",
     "trainExpressName": "Some train name",
     "countryOfOrigin": "Example country",
     "yearOfConstruction": "2137",
