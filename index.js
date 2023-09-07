@@ -47,12 +47,8 @@ app.post('/trains', (req, res) => {
                     highestId = id;
                 }
             })
-            console.log(`highestId: ${highestId}`);
-            const newId = (highestId + 1).toString();
-            console.log(`newId: ${newId}`);
 
-            // Generowanie identyfikatora dla kolejnego pociągu
-            // const newId = (trainList.length + 1).toString();
+            const newId = (highestId + 1).toString();
 
             // Tworzenie nowego obiektu pociągu z nowym identyfikatorem
             const newTrain = {

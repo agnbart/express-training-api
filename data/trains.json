@@ -1,8 +1,8 @@
 [
   {
     "id": "1",
-    "trainExpressName": "Some train name",
-    "countryOfOrigin": "Example country",
+    "trainExpressName": "Kosciuszko",
+    "countryOfOrigin": "Poland",
     "yearOfConstruction": "2137",
     "maxKilometerPerHour": "320",
     "destinationFrom": "Earth",
@@ -10,47 +10,20 @@
   },
   {
     "id": "2",
-    "trainExpressName": "Some train name",
-    "countryOfOrigin": "Example country",
-    "yearOfConstruction": "2137",
-    "maxKilometerPerHour": "320",
-    "destinationFrom": "Earth",
-    "destinationTo": "Moon"
+    "trainExpressName": "Happy Mars",
+    "countryOfOrigin": "Poland",
+    "yearOfConstruction": "2132",
+    "maxKilometerPerHour": "3201",
+    "destinationFrom": "Moon",
+    "destinationTo": "Wenus"
   },
   {
     "id": "3",
-    "trainExpressName": "Some train name",
-    "countryOfOrigin": "Example country",
-    "yearOfConstruction": "2137",
-    "maxKilometerPerHour": "320",
-    "destinationFrom": "Earth",
-    "destinationTo": "Moon"
-  },
-  {
-    "id": "4",
-    "trainExpressName": "Some train name",
-    "countryOfOrigin": "Example country",
-    "yearOfConstruction": "2137",
-    "maxKilometerPerHour": "320",
-    "destinationFrom": "Earth",
-    "destinationTo": "Moon"
-  },
-  {
-    "id": "5",
-    "trainExpressName": "Some train name",
-    "countryOfOrigin": "Example country",
-    "yearOfConstruction": "2137",
-    "maxKilometerPerHour": "320",
-    "destinationFrom": "Earth",
-    "destinationTo": "Moon"
-  },
-  {
-    "id": "6",
-    "trainExpressName": "Some train name",
-    "countryOfOrigin": "Example country",
-    "yearOfConstruction": "2137",
-    "maxKilometerPerHour": "320",
-    "destinationFrom": "Earth",
-    "destinationTo": "Moon"
+    "trainExpressName": "Plejada",
+    "countryOfOrigin": "Hungary",
+    "yearOfConstruction": "2666",
+    "maxKilometerPerHour": "3201",
+    "destinationFrom": "Thor",
+    "destinationTo": "Loki"
   }
 ]
