@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const fs = require('fs');
 const bodyParser = require('body-parser');
+const Joi = require('joi');
 
 const PORT = process.env.PORT || 4000
 
@@ -12,7 +13,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/trains', (req, res) => {
-    fs.readFile('data/trains.json', 'utf8', (err, data) => {
+    fs.readFile('../data/trains.json', 'utf8', (err, data) => {
         if (err) {
             console.error(err);
             res.status(500).json({ error: 'Data read error.' });
@@ -29,8 +30,37 @@ app.get('/trains', (req, res) => {
     });
 });
 
+const schema = Joi.object({
+    trainExpressName: Joi.string()
+        .alphanum()
+        .min(3)
+        .max(30)
+        .required(),
+    countryOfOrigin: Joi.string()
+        .alphanum()
+        .min(3)
+        .max(30)
+        .required(),
+    yearOfConstruction: Joi.string()
+        .regex(/^\d+$/)
+        .required(),
+    maxKilometerPerHour: Joi.string()
+        .regex(/^\d+$/)
+        .required(),
+    destinationFrom: Joi.string()
+        .regex(/^.*$/)
+        .min(2)
+        .max(30)
+        .required(),
+    destinationTo: Joi.string()
+        .regex(/^.*$/)
+        .min(2)
+        .max(30)
+        .required(),
+})
+
 app.post('/trains', (req, res) => {
-    fs.readFile('data/trains.json', 'utf8', (readErr, data) => {
+    fs.readFile('../data/trains.json', 'utf8', (readErr, data) => {
         if (readErr) {
             console.error(readErr);
             res.status(500).json({ error: 'Data read error.' });
@@ -38,6 +68,16 @@ app.post('/trains', (req, res) => {
         }
 
         try {
+            const dataToValidate = req.body;
+            const {error, value} = schema.validate(dataToValidate);
+            if (error) {
+                console.error('Validation error.', error.details[0].message);
+                res.send(error.details[0].message);
+                return;
+            }else {
+                console.log('Correct data.', value);
+            }
+
             const trainList = JSON.parse(data);
 
             let highestId = 0;
@@ -59,7 +99,7 @@ app.post('/trains', (req, res) => {
             trainList.push(newTrain);
 
             // Zaktualizuj plik z danymi JSON
-            fs.writeFile('data/trains.json', JSON.stringify(trainList, null, 2), 'utf8', (writeErr) => {
+            fs.writeFile('../data/trains.json', JSON.stringify(trainList, null, 2), 'utf8', (writeErr) => {
                 if (writeErr) {
                     console.error(writeErr);
                     res.status(500).json({ error: 'Data write error.' });
