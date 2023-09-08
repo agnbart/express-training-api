@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/trains', (req, res) => {
-    fs.readFile('../data/trains.json', 'utf8', (err, data) => {
+    fs.readFile('data/trains.json', 'utf8', (err, data) => {
         if (err) {
             console.error(err);
             res.status(500).json({ error: 'Data read error.' });
@@ -60,7 +60,7 @@ const schema = Joi.object({
 })
 
 app.post('/trains', (req, res) => {
-    fs.readFile('../data/trains.json', 'utf8', (readErr, data) => {
+    fs.readFile('data/trains.json', 'utf8', (readErr, data) => {
         if (readErr) {
             console.error(readErr);
             res.status(500).json({ error: 'Data read error.' });
@@ -98,7 +98,7 @@ app.post('/trains', (req, res) => {
             trainList.push(newTrain);
 
             // Zaktualizuj plik z danymi JSON
-            fs.writeFile('../data/trains.json', JSON.stringify(trainList, null, 2), 'utf8', (writeErr) => {
+            fs.writeFile('data/trains.json', JSON.stringify(trainList, null, 2), 'utf8', (writeErr) => {
                 if (writeErr) {
                     console.error(writeErr);
                     res.status(500).json({ error: 'Data write error.' });
