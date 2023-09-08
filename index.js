@@ -72,7 +72,6 @@ app.post('/trains', (req, res) => {
             const {error, value} = schema.validate(dataToValidate);
             if (error) {
                 console.error('Validation error.', error.details[0].message);
-                return;
             }else {
                 console.log('Correct data.', value);
             }
