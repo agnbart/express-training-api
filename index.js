@@ -41,11 +41,11 @@ const schema = Joi.object({
         .min(3)
         .max(30)
         .required(),
-    yearOfConstruction: Joi.number()
-        .min(1850)
-        .max(2099)
+    yearOfConstruction: Joi.string()
+        .regex(/^(18\d\d|20[0-9][0-9])$/)
         .required(),
-    maxKilometerPerHour: Joi.number()
+    maxKilometerPerHour: Joi.string()
+        .regex(/^\d+$/)
         .required(),
     destinationFrom: Joi.string()
         .alphanum()
@@ -72,6 +72,7 @@ app.post('/trains', (req, res) => {
             const {error, value} = schema.validate(dataToValidate);
             if (error) {
                 console.error('Validation error.', error.details[0].message);
+                return;
             }else {
                 console.log('Correct data.', value);
             }
