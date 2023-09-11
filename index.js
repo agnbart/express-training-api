@@ -3,7 +3,6 @@ const app = express();
 const fs = require('fs');
 const bodyParser = require('body-parser');
 const Joi = require('joi');
-const methodOverride = require('method-override');
 
 const PORT = process.env.PORT || 4000
 
@@ -117,8 +116,7 @@ app.post('/trains', (req, res) => {
 
 app.put('/trains/:id', (req, res) => {
     const searchId = req.params.id;
-    console.log(req.body);
-    fs.readFile('data/trains.json', 'utf8', (readErr, data) => {
+     fs.readFile('data/trains.json', 'utf8', (readErr, data) => {
         if (readErr) {
             console.error(readErr);
             res.status(500).json({ error: 'Data read error.' });
@@ -134,7 +132,6 @@ app.put('/trains/:id', (req, res) => {
                     ...trainList[foundIndex],
                     ...replacementTrain
                 };
-                console.log(`${trainList[foundIndex]}`);
 
                 fs.writeFile('data/trains.json', JSON.stringify(trainList, null, 2), 'utf8', (writeErr) => {
                     if (writeErr) {
@@ -142,7 +139,7 @@ app.put('/trains/:id', (req, res) => {
                         res.status(500).json({ error: 'Data write error.' });
                     } else {
                         res.json(replacementTrain); // Zwróć zaktualizowany obiekt
-                        console.log("Changed replacement");
+                        console.log("the file content has been changed");
                     }
                 });
             } else {
