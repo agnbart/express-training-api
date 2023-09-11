@@ -164,7 +164,7 @@ app.delete('/trains/:id', (req, res) =>{
         }
         try {
             const trainList = JSON.parse(data);
-            const foundIndex = trainList.findIndex(train => train.id === searchId);
+            const foundIndex = trainList.findIndex(train => train.id === parseInt(searchId));
             if (foundIndex !== -1) {
                 trainList.splice(foundIndex, 1);
 
