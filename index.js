@@ -152,6 +152,38 @@ app.put('/trains/:id', (req, res) => {
     });
 });
 
+app.delete('/trains/:id', (req, res) =>{
+    const searchId = req.params.id;
+
+    fs.readFile('data/trains.json', (readErr, data) => {
+        console.log(searchId);
+        if (readErr) {
+            console.error(readErr);
+            res.status(500).json({ error: 'Data read error.' });
+            return;
+        }
+        try {
+            const trainList = JSON.parse(data);
+            const foundIndex = trainList.findIndex(train => train.id === parseInt(searchId));
+            if (foundIndex !== -1) {
+                trainList.splice(foundIndex, 1);
+
+                fs.writeFile('data/trains.json', JSON.stringify(trainList, null, 2), 'utf8', (writeErr) => {
+                    if (writeErr) {
+                        console.error(writeErr);
+                        res.status(500).json({ error: 'Data write error.' });
+                    } else {
+                        res.send("OK");
+                    }
+                });
+            }
+
+        } catch (err) {
+            console.error(err);
+            res.status(500).json({ error: 'Data parsing error.' });
+        }
+    })
+});
 
 app.listen(PORT, () => {
     console.log('Server listening on port http://localhost:4000')
