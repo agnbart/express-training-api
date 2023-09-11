@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/trains', (req, res) => {
-    fs.readFile('../data/trains.json', 'utf8', (err, data) => {
+    fs.readFile('data/trains.json', 'utf8', (err, data) => {
         if (err) {
             console.error(err);
             res.status(500).json({ error: 'Data read error.' });
@@ -60,7 +60,7 @@ const schema = Joi.object({
 })
 
 app.post('/trains', (req, res) => {
-    fs.readFile('../data/trains.json', 'utf8', (readErr, data) => {
+    fs.readFile('data/trains.json', 'utf8', (readErr, data) => {
         if (readErr) {
             console.error(readErr);
             res.status(500).json({ error: 'Data read error.' });
@@ -99,7 +99,7 @@ app.post('/trains', (req, res) => {
             trainList.push(newTrain);
 
             // Zaktualizuj plik z danymi JSON
-            fs.writeFile('../data/trains.json', JSON.stringify(trainList, null, 2), 'utf8', (writeErr) => {
+            fs.writeFile('data/trains.json', JSON.stringify(trainList, null, 2), 'utf8', (writeErr) => {
                 if (writeErr) {
                     console.error(writeErr);
                     res.status(500).json({ error: 'Data write error.' });
@@ -113,6 +113,45 @@ app.post('/trains', (req, res) => {
         }
     });
 });
+
+app.put('/trains/:id', (req, res) => {
+    const searchId = req.params.id;
+     fs.readFile('data/trains.json', 'utf8', (readErr, data) => {
+        if (readErr) {
+            console.error(readErr);
+            res.status(500).json({ error: 'Data read error.' });
+            return;
+        }
+
+        try {
+            const trainList = JSON.parse(data);
+            const foundIndex = trainList.findIndex(train => train.id === searchId);
+            if (foundIndex !== -1) {
+                const replacementTrain = req.body;
+                trainList[foundIndex] = {
+                    ...trainList[foundIndex],
+                    ...replacementTrain
+                };
+
+                fs.writeFile('data/trains.json', JSON.stringify(trainList, null, 2), 'utf8', (writeErr) => {
+                    if (writeErr) {
+                        console.error(writeErr);
+                        res.status(500).json({ error: 'Data write error.' });
+                    } else {
+                        res.json(replacementTrain); // Zwróć zaktualizowany obiekt
+                        console.log("the file content has been changed");
+                    }
+                });
+            } else {
+                res.status(404).json({ error: 'Train not found.' });
+            }
+        } catch (err) {
+            console.error(err);
+            res.status(500).json({ error: 'Data parsing error.' });
+        }
+    });
+});
+
 
 app.listen(PORT, () => {
     console.log('Server listening on port http://localhost:4000')
